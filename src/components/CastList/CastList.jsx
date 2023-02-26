@@ -1,4 +1,5 @@
 import { ListItem } from '../CastList/CastList.styled';
+import PropTypes from 'prop-types';
 
 export const CastList = ({ actors }) => {
   const { cast } = actors;
@@ -15,5 +16,18 @@ export const CastList = ({ actors }) => {
         <p>Character: {character}</p>
       </ListItem>
     );
-  })
-}
+  });
+};
+
+CastList.propTypes = {
+  actors: PropTypes.shape({
+    cast: PropTypes.arrayOf(
+      PropTypes.shape({
+        character: PropTypes.string,
+        name: PropTypes.string,
+        profile_path: PropTypes.string,
+        id: PropTypes.number,
+      })
+    ),
+  }),
+};

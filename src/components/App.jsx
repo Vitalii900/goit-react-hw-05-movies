@@ -6,19 +6,9 @@ import { MovieDetails } from '../pages/MovieDetails/MovieDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
 import { SharedLayout } from '../components/SharedLayout/SharedLayout';
-// import { Container, NavItem, Header } from './App.styled';
 
 export const App = () => {
   return (
-    // <Container>
-    // <Header>
-    //   <nav>
-    //     <NavItem to="/" end>
-    //       Home
-    //     </NavItem>
-    //     <NavItem to="/movies">Movies</NavItem>
-    //   </nav>
-    // </Header>
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
@@ -30,6 +20,5 @@ export const App = () => {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
-    // </Container>
   );
 };

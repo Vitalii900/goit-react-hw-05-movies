@@ -34,6 +34,7 @@ export async function getCast(id) {
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${KEY}&language=en-US`
     );
     const castDetail = response.data;
+    // console.log(castDetail);
     return castDetail;
   } catch (error) {
     console.error(error);

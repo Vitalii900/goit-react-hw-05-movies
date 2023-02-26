@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { List, ListItem, ListLink } from '../SearchList/SearchList.styled';
+import PropTypes from 'prop-types';
 
 export const SearchList = ({ movies }) => {
   const location = useLocation();
@@ -16,4 +17,14 @@ export const SearchList = ({ movies }) => {
       })}
     </List>
   );
+};
+
+SearchList.propTypes = {
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      id: PropTypes.number,
+    })
+  ),
 };
