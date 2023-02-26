@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCast } from '../components/API';
-import { CastList } from '../components/CastList';
+import { getCast } from '../API';
+import { CastList } from '../CastList/CastList';
+import { List } from '../Cast/Cast.styled';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -12,8 +13,8 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <List>
       {aboutCast.length !== 0 && <CastList actors={aboutCast}></CastList>}
-    </ul>
+    </List>
   );
 };

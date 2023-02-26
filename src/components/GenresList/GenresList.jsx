@@ -1,9 +1,11 @@
+import { List } from '../GenresList/GenresList.styled';
+
 export const GenresList = ({ genres }) => {
   return (
-    <ul>
+    <List>
       {genres.map(genre => (
         <li key={genre.id}>{genre.name}</li>
       ))}
-    </ul>
+    </List>
   );
 };
