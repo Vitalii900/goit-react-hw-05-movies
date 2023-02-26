@@ -6,21 +6,24 @@ import { ReviewList } from '../components/ReviewsList';
 export const Reviews = () => {
   const { movieId } = useParams();
   const [aboutReviews, setAboutReviews] = useState([]);
-  // console.log(aboutReviews);
+  console.log(aboutReviews);
   useEffect(() => {
-    const reviewsById = async id => {
-      const infoAboutReviews = await getReviews(id);
-      setAboutReviews(infoAboutReviews);
-      // console.log(infoAboutReviews);
-    };
-    reviewsById(movieId);
+    getReviews(movieId).then(setAboutReviews);
   }, [movieId]);
 
-  const { results } = aboutReviews;
+  // if (!aboutReviews) {
+  //   return null;
+  // }
+
+  const { results, total_pages } = aboutReviews;
 
   return (
     <ul>
-      {results && <ReviewList reviews={results}></ReviewList>}
+      {total_pages ? (
+        <ReviewList reviews={results}></ReviewList>
+      ) : (
+        <p>We don`t have any reviews for this movie</p>
+      )}
     </ul>
   );
 };

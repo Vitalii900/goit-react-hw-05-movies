@@ -8,12 +8,7 @@ export const Cast = () => {
   const [aboutCast, setAboutCast] = useState([]);
   // console.log(movieId);
   useEffect(() => {
-    const castById = async id => {
-      const infoAboutCast = await getCast(id);
-      setAboutCast(infoAboutCast);
-      // console.log(infoAboutCast);
-    };
-    castById(movieId);
+    getCast(movieId).then(setAboutCast);
   }, [movieId]);
 
   return (

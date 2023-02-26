@@ -1,22 +1,23 @@
-import { Route, Routes, NavLink } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
 import { NotFound } from '../pages/NotFound';
 import { MovieDetails } from '../pages/MovieDetails';
 import { Cast } from '../components/Cast';
 import { Reviews } from '../components/Reviews';
+import { Container, NavItem, Header } from './App.styled';
 
 export const App = () => {
   return (
-    <div>
-      <div>
+    <Container>
+      <Header>
         <nav>
-          <NavLink to="/" end>
+          <NavItem to="/" end>
             Home
-          </NavLink>
-          <NavLink to="/movies">Movies</NavLink>
+          </NavItem>
+          <NavItem to="/movies">Movies</NavItem>
         </nav>
-      </div>
+      </Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -26,6 +27,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </Container>
   );
 };

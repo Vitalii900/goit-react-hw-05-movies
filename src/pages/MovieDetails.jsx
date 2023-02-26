@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useParams, Outlet, Link } from 'react-router-dom';
+import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
 import { getMovieById } from '../components/API';
 import { GenresList } from '../components/GenresList';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [aboutMovie, setAboutMovie] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
-    const movieById = async id => {
-      const infoAboutMovie = await getMovieById(id);
-      setAboutMovie(infoAboutMovie);
-      // console.log(infoAboutMovie);
-    };
-    movieById(movieId);
+    getMovieById(movieId).then(setAboutMovie);
   }, [movieId]);
 
   const imageURL = `https://www.themoviedb.org/t/p/w500/${aboutMovie.backdrop_path}`;
@@ -21,6 +17,7 @@ export const MovieDetails = () => {
 
   return (
     <main>
+      <Link to={location.state?.from ?? '/'}>Back</Link>
       <img src={backdrop_path && imageURL} alt={title} />
       <div>
         <h2>
@@ -34,8 +31,12 @@ export const MovieDetails = () => {
       </div>
       <div>
         <p>Aditional information</p>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <Link to="cast" state={{ from: location.state?.from }}>
+          Cast
+        </Link>
+        <Link to="reviews" state={{ from: location.state?.from }}>
+          Reviews
+        </Link>
         <Outlet />
       </div>
     </main>
