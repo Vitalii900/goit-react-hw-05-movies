@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from '../../components/API';
 import { GenresList } from '../../components/GenresList/GenresList';
@@ -10,7 +10,7 @@ import {
   AditionalContainer,
 } from '../MovieDetails/MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [aboutMovie, setAboutMovie] = useState([]);
   const location = useLocation();
@@ -48,7 +48,11 @@ export const MovieDetails = () => {
           Reviews
         </AdditionalLink>
       </AditionalContainer>
-      <Outlet />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+
+export default MovieDetails;

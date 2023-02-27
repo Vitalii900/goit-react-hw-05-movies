@@ -4,7 +4,7 @@ import { getCast } from '../API';
 import { CastList } from '../CastList/CastList';
 import { List } from '../Cast/Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [aboutCast, setAboutCast] = useState([]);
   // console.log(movieId);
@@ -18,3 +18,5 @@ export const Cast = () => {
     </List>
   );
 };
+
+export default Cast;

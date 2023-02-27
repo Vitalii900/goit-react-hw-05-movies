@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getSearchMovie } from '../components/API';
 import { SearchList } from '../components/SearchList/SearchList';
 
-export const Movies = () => {
+const Movies = () => {
   const [arrayOfMovie, setArrayOfMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const find = searchParams.get('find') ?? '';
@@ -39,3 +39,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

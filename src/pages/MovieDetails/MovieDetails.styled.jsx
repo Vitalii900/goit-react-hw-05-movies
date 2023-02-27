@@ -27,7 +27,7 @@ export const BackLinkButton = ({ to, children }) => {
 };
 
 export const Image = styled.img`
-  width: 400px;
+  width: 200px;
   height: auto;
 `
 

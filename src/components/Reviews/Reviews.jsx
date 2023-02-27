@@ -4,7 +4,7 @@ import { getReviews } from '../API';
 import { ReviewList } from '../ReviewsList';
 import { List } from '../Reviews/Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [aboutReviews, setAboutReviews] = useState([]);
   useEffect(() => {
@@ -23,3 +23,5 @@ export const Reviews = () => {
     </List>
   );
 };
+
+export default Reviews;
